@@ -8,52 +8,21 @@ This project was created to simplify development environment setup by using Dock
 
 ## How to Use
 
-***Making sure you are in the mode of 'Linux Container'. Never mind if your system is not Win10/Win2016***
+> ***Making sure you are in the mode of 'Linux Container'. Never mind if your system is not Win10/Win2016***
 
 1. Download this whole folder to you local
 2. Open Command Prompt and navigate to that folder
-3. Run `up.bat` to start all the server
-```
-up.bat
-```
-And if everything is good, you'll see logs like:
-```
-Creating network "devworkspace_devnet" with the default driver
-Creating dev-elastic
-Creating dev-couchdb
-Creating dev-rabbitmq
-Creating devworkspace_riak-kv_1
-Creating dev-kibana
-WARNING: Found orphan containers (dev-kibana, dev-couchdb, dev-elastic, devworkspace_riak-kv_1, dev-rabbitmq) for this project. If you removed or renamed this service in your compose file, you can run this command with the --remove-orphans flag to clean it up.
-Creating devworkspace_fake-smtp_1
-```
+3. **Run `up.bat` to start all the server**
 
-This is for the optional services that might be used for current environment. If you don't want them you can either ignore them or disable them by remove the second line of `docker-compose up` in [up.bat]
+
+![up](http://imagizer.imageshack.us/a/img924/7122/I00qSR.gif)
+
+> The containers created after the `WARNING` are optional services that might be used for current environment. If you don't want them you can either ignore them or disable them by remove the second line of `optional-compose` in [up.bat]
 
 4. Done! Your data for CouchDB and ElasticSearch will be saved under this folder
-5. Remove all the containers whenever you want
-```
-down.bat
-```
-And you'll see:
-```
-Stopping dev-kibana ... done
-Stopping dev-couchdb ... done
-Stopping dev-elastic ... done
-Stopping devworkspace_riak-kv_1 ... done
-Stopping dev-rabbitmq ... done
-WARNING: Found orphan containers (devworkspace_fake-smtp_1) for this project. If you removed or renamed this service in your compose file, you can run this command with the --remove-orphans flag to clean it up.
-Removing dev-kibana ... done
-Removing dev-couchdb ... done
-Removing dev-elastic ... done
-Removing devworkspace_riak-kv_1 ... done
-Removing dev-rabbitmq ... done
-Removing network devworkspace_devnet
-ERROR: network devworkspace_devnet has active endpoints
-Stopping devworkspace_fake-smtp_1 ... done
-Removing devworkspace_fake-smtp_1 ... done
-Removing network devworkspace_devnet
-```
+5. **Shutdown and remove all the containers whenever you want by `down.bat`**
+
+![down](http://imageshack.com/a/img922/1149/JxA3Ih.gif)
 
 Then your machine will be as clean as it was.
 
