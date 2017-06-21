@@ -17,7 +17,10 @@ D:\docker\dev-workspace\couchdb>powershell -File migrate.ps1
 
 Open your browser for the [new CouchDB](http://127.0.0.1:5988/_utils/) server on your local.
 
-Login using the user/password for the CouchDB. Open the tab 'Replication'
+Login using the user/password for the CouchDB. 
+> The couch in container needs to be configured as a 'cluster' instead of of 'single node'. [Here is a simple instruction](http://imagizer.imageshack.us/a/img923/35/iZAWSa.gif) to setup.
+
+Open the tab 'Replication'
 ![Replication Page](http://imagizer.imageshack.us/a/img922/6200/Gf3K5X.gif)
 
 The `Remote` address is actually the database url that directing to our local(127.0.0.1) and the `Local` is the server itself that stroring docker data.
