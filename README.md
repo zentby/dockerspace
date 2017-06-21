@@ -1,6 +1,6 @@
 # Docker Compose for Development Environment
 
-[description]
+This project was created to simplify development environment setup by using Docker. Please feel free to raise any issue or folk and modify for your own usage.
 
 ## Prerequisites
 
@@ -96,3 +96,8 @@ docker-compose --file optional-compose.yml down
 Simply run [`powershell -File .\couchdb\migrate.ps1`](./couchdb/migrate.ps1)
 
 Details please refer [How to migrate from local CouchDB into docker volume](./couchdb/Migration.md)
+
+---
+## Licence
+
+MIT
