@@ -1,0 +1,15 @@
+version: '3'
+services:
+
+  fake-smtp:
+    build: ./fake-smtp
+    image: fake-smtp
+    ports:
+      - '9925:25'
+    volumes:
+      - ./fake-smtp/output:/output
+    networks:
+      - devnet
+
+networks:
+  devnet:

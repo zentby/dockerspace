@@ -1,0 +1,69 @@
+version: '3'
+services:
+  riak-kv:
+    image: basho/riak-kv
+    ports:
+      - 8087:8087
+      - 8098:8098
+    environment:
+      - CLUSTER_NAME=riakkv
+      - WAIT_FOR_ERLANG=60
+    labels:
+      - "com.basho.riak.cluster.name=riakkv"
+    volumes:
+      # - data:/var/lib/riak
+      - schemas:/etc/riak/schemas
+    networks:
+      - devnet
+
+  rabbit-mq:
+    image: rabbitmq:management-alpine
+    container_name: dev-rabbitmq
+    ports:
+      - 15672:15672
+      - 5672:5672
+    networks:
+      - devnet
+
+  couch-db:
+    container_name: dev-couchdb
+    image: klaemo/couchdb:latest
+    volumes:
+      - ./couchdb/local.ini:/opt/couchdb/etc/local.d/local.ini
+      - ./couchdb/data:/opt/couchdb/data
+    ports:
+      - 5984:5984
+    networks:
+      - devnet
+
+  elastic:
+    image: docker.elastic.co/elasticsearch/elasticsearch:5.4.1
+    container_name: dev-elastic
+    environment:
+      - transport.host=127.0.0.1
+      - http.host=0.0.0.0
+      - xpack.security.enabled=false
+    volumes:
+      - ./elastic-data:/usr/share/elasticsearch/data
+    ports:
+      - 9200:9200
+    networks:
+      - devnet
+
+  kibana:
+    image: docker.elastic.co/kibana/kibana:5.4.1
+    container_name: dev-kibana
+    links:
+      - elastic:elasticsearch
+    ports:
+      - 5601:5601
+    networks:
+      - devnet
+
+
+networks:
+  devnet:
+
+volumes:
+  schemas:
+    external: false

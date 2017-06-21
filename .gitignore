@@ -1,0 +1,5 @@
+# Data folder
+couchdb/data
+elastic-data/*
+kibana
+riak-data
