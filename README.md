@@ -4,7 +4,7 @@ This project was created to simplify development environment setup by using Dock
 
 ## Prerequisites
 
-* [Docker](https://www.docker.com/community-edition)
+* [Install and Start Docker](https://www.docker.com/community-edition)
 
 ## How to Use
 

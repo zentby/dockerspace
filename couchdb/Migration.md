@@ -23,7 +23,7 @@ Login using the user/password for the CouchDB.
 Open the tab 'Replication'
 ![Replication Page](http://imagizer.imageshack.us/a/img922/6200/Gf3K5X.gif)
 
-The `Remote` address is actually the database url that directing to our local(127.0.0.1) and the `Local` is the server itself that stroring docker data.
+The `Remote` address is actually the database url that directing to our local(gateway IP for your docker network, 172.17.0.1 in my case) and the `Local` is the server itself that stroring docker data.
 
 Fill the two box with
 ```
@@ -36,7 +36,7 @@ Replace `membership` with your database name needs to migrate and it should be s
 
 Click 'Replicate' to start transfer data from one side to another. Because it's a one time job so leave the `Continuous` unchecked.
 
-You can get a list of your database on your local by viewing [http://127.0.0.1:5984/_all_dbs](http://127.0.0.1:5984/_all_dbs) and migrate what you need.
+You can get a list of your database on your local by viewing [http://127.0.0.1:5984/_all_dbs](http://127.0.0.1:5984/_all_dbs) and migrate what you need (DB starts with _ is Couch built-in database).
 
 ![Databases](http://imageshack.com/a/img924/1585/f20Jnr.png)
 
