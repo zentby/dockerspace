@@ -3,3 +3,4 @@ couchdb/data
 elastic-data/*
 kibana
 riak-data
+fake-smtp/output

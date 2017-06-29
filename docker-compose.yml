@@ -1,7 +1,16 @@
 version: '3'
 services:
+  redis:
+    image: redis:alpine
+    container_name: dev-redis
+    ports:
+      - 6379:6379
+    networks: 
+      - devnet
+
   riak-kv:
     image: basho/riak-kv
+    container_name: dev-riak
     ports:
       - 8087:8087
       - 8098:8098
@@ -11,8 +20,8 @@ services:
     labels:
       - "com.basho.riak.cluster.name=riakkv"
     volumes:
-      # - data:/var/lib/riak
-      - schemas:/etc/riak/schemas
+      - riakdata:/var/lib/riak
+      - riakschemas:/etc/riak/schemas
     networks:
       - devnet
 
@@ -29,7 +38,7 @@ services:
     container_name: dev-couchdb
     image: klaemo/couchdb:latest
     volumes:
-      - ./couchdb/local.ini:/opt/couchdb/etc/local.d/local.ini
+      - ./couchdb/local:/opt/couchdb/etc/local.d
       - ./couchdb/data:/opt/couchdb/data
     ports:
       - 5984:5984
@@ -65,5 +74,7 @@ networks:
   devnet:
 
 volumes:
-  schemas:
+  riakschemas:
+    external: false
+  riakdata:
     external: false

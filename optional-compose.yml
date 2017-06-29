@@ -2,6 +2,7 @@ version: '3'
 services:
 
   fake-smtp:
+    container_name: dev-smtp
     build: ./fake-smtp
     image: fake-smtp
     ports:
