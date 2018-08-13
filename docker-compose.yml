@@ -3,6 +3,7 @@ services:
   redis:
     image: redis:alpine
     container_name: dev-redis
+    restart: always
     ports:
       - 6379:6379
     networks: 
@@ -11,6 +12,7 @@ services:
   riak-kv:
     image: basho/riak-kv
     container_name: dev-riak
+    restart: always
     ports:
       - 8087:8087
       - 8098:8098
@@ -28,6 +30,7 @@ services:
   rabbit-mq:
     image: rabbitmq:management-alpine
     container_name: dev-rabbitmq
+    restart: always
     ports:
       - 15672:15672
       - 5672:5672
@@ -37,6 +40,7 @@ services:
   couch-db:
     container_name: dev-couchdb
     image: klaemo/couchdb:latest
+    restart: always
     volumes:
       - ./couchdb/local:/opt/couchdb/etc/local.d
       - ./couchdb/data:/opt/couchdb/data
@@ -48,6 +52,7 @@ services:
   elastic:
     image: docker.elastic.co/elasticsearch/elasticsearch:5.4.1
     container_name: dev-elastic
+    restart: always
     environment:
       - transport.host=127.0.0.1
       - http.host=0.0.0.0
@@ -62,6 +67,7 @@ services:
   kibana:
     image: docker.elastic.co/kibana/kibana:5.4.1
     container_name: dev-kibana
+    restart: always
     links:
       - elastic:elasticsearch
     ports:
