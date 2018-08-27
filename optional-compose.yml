@@ -1,6 +1,30 @@
 version: '3'
 services:
 
+  elastic:
+    image: docker.elastic.co/elasticsearch/elasticsearch:5.4.1
+    container_name: dev-elastic
+    environment:
+      - transport.host=127.0.0.1
+      - http.host=0.0.0.0
+      - xpack.security.enabled=false
+    volumes:
+      - ./elastic-data:/usr/share/elasticsearch/data
+    ports:
+      - 9200:9200
+    networks:
+      - devnet
+
+  kibana:
+    image: docker.elastic.co/kibana/kibana:5.4.1
+    container_name: dev-kibana
+    links:
+      - elastic:elasticsearch
+    ports:
+      - 5601:5601
+    networks:
+      - devnet
+      
   fake-smtp:
     container_name: dev-smtp
     build: ./fake-smtp
