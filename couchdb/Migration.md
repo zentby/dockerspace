@@ -11,7 +11,7 @@ Or Command Line
 ```
 D:\docker\dev-workspace\couchdb>powershell -File migrate.ps1
 ```
-![migrate](http://imagizer.imageshack.us/a/img923/6056/NaaQqj.gif)
+![migrate](http://imageshack.com/a/img922/8862/6dwbZF.gif)
 
 ## Go replicate your data
 
@@ -21,26 +21,25 @@ Login using the user/password for the CouchDB.
 > The couch in container needs to be configured as a 'cluster' instead of of 'single node'. [Here is a simple instruction](http://imagizer.imageshack.us/a/img923/35/iZAWSa.gif) to setup.
 
 Open the tab 'Replication'
-![Replication Page](http://imagizer.imageshack.us/a/img922/6200/Gf3K5X.gif)
+![Replication Page](http://imageshack.com/a/img924/9250/bEoxLm.png)
 
-The `Remote` address is actually the database url that directing to our local(gateway IP for your docker network, 172.17.0.1 in my case) and the `Local` is the server itself that stroring docker data.
+The `Remote` address is actually the database url that directing to our local(Use domain name `host.docker.internal` to connect host within container) and the `Local` is the server itself that stroring docker data.
 
 Fill the two box with
 ```
-http://couchuser:couchpass@172.17.0.1:5984/membership
+http://couchuser:couchpass@host.docker.internal:5984/membership
 ```
 Replace `couchuser` with your DB user name
 Replace `couchpass` with your DB password
-Replace `172.17.0.1:5984` with the IP address that prompted in the command line window.
 Replace `membership` with your database name needs to migrate and it should be same with the value in the `Local` box.
 
 Click 'Replicate' to start transfer data from one side to another. Because it's a one time job so leave the `Continuous` unchecked.
 
 You can get a list of your database on your local by viewing [http://127.0.0.1:5984/_all_dbs](http://127.0.0.1:5984/_all_dbs) and migrate what you need (DB starts with _ is Couch built-in database).
 
-![Databases](http://imageshack.com/a/img924/1585/f20Jnr.png)
+![Databases](http://imageshack.com/a/img923/3653/yYjDEM.png)
 
 ## Remove Container
 
 After all to replication, go back to the command line window and press any key to continue running.
-![Remove Container](http://imagizer.imageshack.us/a/img922/9854/mg1Ua6.gif)
+![Remove Container](http://imageshack.com/a/img922/8201/ujUENB.gif)
