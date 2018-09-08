@@ -15,14 +15,14 @@ This project was created to simplify development environment setup by using Dock
 3. **Run `up.bat` to start all the server**
 
 
-![up](http://imagizer.imageshack.us/a/img924/7122/I00qSR.gif)
+![up](http://imageshack.com/a/img923/3031/xqUB8u.gif)
 
 > The containers created after the `WARNING` are optional services that might be used for current environment. If you don't want them you can either ignore them or disable them by remove the second line of `optional-compose` in [up.bat]
 
 4. Done! Your data for CouchDB and ElasticSearch will be saved under this folder
 5. **Shutdown and remove all the containers whenever you want by `down.bat`**
 
-![down](http://imageshack.com/a/img922/1149/JxA3Ih.gif)
+![down](http://imageshack.com/a/img924/2103/zvh4kh.gif)
 
 Then your machine will be as clean as it was.
 
